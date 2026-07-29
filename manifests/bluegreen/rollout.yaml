@@ -29,4 +29,4 @@ spec:
       activeService: demo-bluegreen-active      # receives 100% of live traffic
       previewService: demo-bluegreen-preview    # receives preview traffic only
       autoPromotionEnabled: false               # ← the manual gate: a human promotes
-      scaleDownDelaySeconds: 30                 # keep old version warm for instant rollback
+      scaleDownDelaySeconds: 600                 # keep old version warm for instant rollback
