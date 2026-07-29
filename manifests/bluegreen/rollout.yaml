@@ -22,6 +22,8 @@ spec:
             requests:
               cpu: 5m
               memory: 32Mi
+  rollbackWindow:
+    revisions: 2
   strategy:
     blueGreen:
       activeService: demo-bluegreen-active      # receives 100% of live traffic
