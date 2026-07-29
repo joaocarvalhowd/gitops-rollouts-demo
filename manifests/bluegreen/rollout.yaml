@@ -22,11 +22,9 @@ spec:
             requests:
               cpu: 5m
               memory: 32Mi
-  rollbackWindow:
-    revisions: 2
   strategy:
     blueGreen:
       activeService: demo-bluegreen-active      # receives 100% of live traffic
       previewService: demo-bluegreen-preview    # receives preview traffic only
       autoPromotionEnabled: false               # ← the manual gate: a human promotes
-      scaleDownDelaySeconds: 600                 # keep old version warm for instant rollback
+      scaleDownDelaySeconds: 60                 # keep old version warm for instant rollback
