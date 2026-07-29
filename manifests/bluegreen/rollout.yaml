@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: demo-bluegreen
+spec:
+  replicas: 3
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: demo-bluegreen
+  template:
+    metadata:
+      labels:
+        app: demo-bluegreen
+    spec:
+      containers:
+        - name: rollouts-demo
+          image: argoproj/rollouts-demo:blue    # ← the line we'll change during the demo
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
+  strategy:
+    blueGreen:
+      activeService: demo-bluegreen-active      # receives 100% of live traffic
+      previewService: demo-bluegreen-preview    # receives preview traffic only
+      autoPromotionEnabled: false               # ← the manual gate: a human promotes
+      scaleDownDelaySeconds: 30                 # keep old version warm for instant rollback
