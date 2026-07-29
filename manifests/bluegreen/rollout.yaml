@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: rollouts-demo
-          image: argoproj/rollouts-demo:purple    # ← the line we'll change during the demo
+          image: argoproj/rollouts-demo:bad-red    # ← the line we'll change during the demo
           ports:
             - containerPort: 8080
           resources:
