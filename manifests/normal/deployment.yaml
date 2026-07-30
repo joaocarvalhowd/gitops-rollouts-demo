@@ -17,7 +17,7 @@ spec:
           image: hashicorp/http-echo:1.0
           args:
             - -listen=:5678
-            - -text=lunadis é viado        # ← bump this string for the rolling update
+            - -text=normal      # ← bump this string for the rolling update
           ports:
             - containerPort: 5678
           resources:
